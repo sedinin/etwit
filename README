@@ -1,0 +1,39 @@
+Implemented as asynchroneous gen_server spawning child to perform operations and
+control their returns and deaths.
+
+Rebar used to compile and start node.
+
+To simple compile type:
+
+./make.sh
+
+To run console type:
+
+./run.sh
+
+and then type in erlang console:
+
+etwit_server:follow_revolution().
+
+or
+
+etwit_server:follow(Keyword).
+
+and
+
+etwit_server:get_weirdchina_followers().
+
+or
+
+etwit_server:get_followers(Keyword).
+
+Progress and error reports by default written to /tmp/alogger.log
+This behaviour can be changed by editing 'alog' entry in rel/files/sys.config
+and regenerating release. The same way can be changed OAUTH keys/tokens.
+
+TODO:
+
+1. Flow control (now routines fails because of twitter restrictions).
+2. Not store so long list of numbers in memory, and will not return
+  list of 400k+ entries. May be some ETS or RDBMS or KV store.
+3. More testing && automatic (unit) tests.
